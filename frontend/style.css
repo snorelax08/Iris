@@ -1,0 +1,230 @@
+/* Iris theme — base. The eye (iris.js) is the one bold element; everything else
+   recedes. Accent colours are taken from the iris itself: amber from the collarette,
+   slate from the outer iris. */
+:root {
+  --void: #000000;
+  --bone: #ece7df;
+  --ash: #8f9498;
+  --dim: #5d6266;
+  --amber: #d8a24a;
+  --slate: #83a5b8;
+  --line: rgba(236, 231, 223, 0.1);
+  --danger: #e2766f;
+  --serif: "Palatino Linotype", Palatino, "Book Antiqua", "Iowan Old Style", "URW Palladio L", Georgia, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--void);
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  background: var(--void);
+  color: var(--bone);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  width: 100%;
+  max-width: 540px;
+  text-align: center;
+}
+
+.brand {
+  margin-top: 8px;
+}
+
+h1,
+.wordmark {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 2.25rem;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.subtitle {
+  color: var(--ash);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 6px auto 0;
+  max-width: 34em;
+  text-wrap: balance;
+}
+
+/* ---- The eye ---- */
+.eye {
+  width: min(90vw, 60vh, 620px);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+
+.eye canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.phase-caption {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 1.35;
+  margin: -6px auto 0;
+  min-height: 1.35em;
+  max-width: 28em;
+  color: var(--bone);
+  transition: color 0.35s ease;
+}
+
+body.phase-listening .phase-caption { color: var(--amber); }
+body.phase-thinking .phase-caption { color: var(--slate); }
+body.phase-off .phase-caption { color: var(--ash); }
+
+.heard {
+  margin: 6px auto 0;
+  min-height: 1.45em;
+  max-width: 34em;
+  font-size: 0.92rem;
+  color: var(--ash);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  background: var(--bone);
+  color: #000;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 12px 26px;
+  font: 600 0.95rem/1.2 var(--sans);
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:hover {
+  background: #ffffff;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+#loginBtn {
+  margin-top: 22px;
+}
+
+.btn.secondary {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--ash);
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 8px 14px;
+}
+
+.btn.secondary:hover {
+  background: rgba(236, 231, 223, 0.06);
+  color: var(--bone);
+}
+
+#micBtn[aria-pressed="true"] {
+  border-color: rgba(216, 162, 74, 0.55);
+  color: var(--amber);
+}
+
+.hidden {
+  display: none;
+}
+
+/* ---- Now playing ---- */
+.now {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 18px;
+  align-items: center;
+  margin-top: 22px;
+  text-align: left;
+}
+
+.status-card {
+  min-width: 0;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.82rem;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  color: var(--ash);
+  flex: none;
+}
+
+.value {
+  font-weight: 500;
+  color: var(--bone);
+  text-align: right;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hint {
+  margin-top: 22px;
+  font-size: 0.78rem;
+  color: var(--dim);
+  line-height: 1.6;
+}
+
+.hint em {
+  font-style: normal;
+  color: var(--ash);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.debug-panel {
+  margin-top: 12px;
+  background: #070707;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  max-height: 260px;
+  overflow-y: auto;
+  text-align: left;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  color: #a9bfae;
+  white-space: pre-wrap;
+  word-break: break-word;
+}

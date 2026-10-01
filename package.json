@@ -1,0 +1,22 @@
+{
+  "name": "akon",
+  "version": "1.0.0",
+  "description": "Voice-controlled music assistant that plays songs via the Spotify Web Playback SDK",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "test": "node test/matching.test.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

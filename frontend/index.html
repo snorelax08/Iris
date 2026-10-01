@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iris — Voice Music Assistant</title>
+  <meta name="theme-color" content="#000000" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="polish.css" />
+</head>
+<body class="phase-off">
+  <main class="container">
+    <header class="brand">
+      <h1 class="wordmark">Iris</h1>
+      <p class="subtitle">Voice-controlled music assistant, powered by Spotify Web Playback SDK</p>
+    </header>
+
+    <div class="eye" id="stage">
+      <canvas id="irisCanvas" aria-hidden="true"></canvas>
+    </div>
+    <p id="phaseCaption" class="phase-caption" aria-live="polite">Connect Spotify to begin</p>
+    <p id="heardText" class="heard" aria-live="polite"></p>
+
+    <button id="loginBtn" class="btn">Connect Spotify</button>
+
+    <div id="app" class="hidden">
+      <p id="matchHint" class="match-hint hidden"></p>
+
+      <section class="now" aria-label="Now playing">
+        <div class="art" id="artBox">
+          <img id="artImg" class="hidden" alt="Album art" />
+          <div class="art-ph" id="artPh" aria-hidden="true"></div>
+          <div class="skeleton hidden" id="skeleton" aria-hidden="true">
+            <div class="shimmer"></div>
+            <p id="skeletonText"></p>
+          </div>
+          <div class="eq" id="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        </div>
+
+        <div class="status-card" aria-live="polite">
+          <div class="row">
+            <span class="label">Status</span>
+            <span id="listeningStatus" class="value">Connecting player…</span>
+          </div>
+          <div class="row">
+            <span class="label">Last command</span>
+            <span id="lastCommand" class="value">—</span>
+          </div>
+          <div class="row">
+            <span class="label">Now playing</span>
+            <span id="nowPlaying" class="value">Nothing</span>
+          </div>
+          <div class="row">
+            <span class="label">Playback</span>
+            <span id="playbackStatus" class="value">Paused</span>
+          </div>
+        </div>
+      </section>
+
+      <ul id="history" class="history" aria-label="Recent commands"></ul>
+
+      <p class="hint">
+        Try saying: <em>“Iris, play Believer”</em>, <em>“Iris, pause”</em>, <em>“Iris, next”</em>,
+        <em>“Iris, volume up”</em>, <em>“Iris, kesariya bajao”</em>, <em>“Iris, option two”</em>
+      </p>
+
+      <div class="controls">
+        <button id="micBtn" class="btn secondary" aria-pressed="false">Mute microphone</button>
+        <button id="debugToggle" class="btn secondary">Show Debug Info</button>
+      </div>
+      <pre id="debugLog" class="debug-panel hidden"></pre>
+    </div>
+  </main>
+
+  <div id="toasts" class="toasts" aria-hidden="true"></div>
+
+  <!-- Spotify Web Playback SDK -->
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+
+  <!-- App modules -->
+  <script src="/shared/intent.js"></script>
+  <script src="spotify.js"></script>
+  <script src="voice.js"></script>
+  <script src="app.js"></script>
+  <script src="polish.js"></script>
+  <script src="iris.js"></script>
+</body>
+</html>
